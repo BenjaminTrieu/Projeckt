@@ -36,6 +36,7 @@ private:
 	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
+	void DrawBox();
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -45,6 +46,7 @@ private:
 	int x = 400;
 	int y = 300;
 	int gb = 255;
+	bool Shape_Is_Changed = false;
 	bool ShapeIsChanged = false;
 	int vx = 0;
 	int vy = 0;
@@ -52,5 +54,14 @@ private:
 	bool InhibitDown = false;
 	bool InhibitLeft = false;
 	bool InhibitRight = false;
+	int a = 400;
+	int b = 300;
+	int va = 0;
+	int vb = 0;
+	bool InhibitW = false;
+	bool InhibitS = false;
+	bool InhibitA = false;
+	bool InhibitD = false;
+	int rb = 255;
 	/********************************/
 };

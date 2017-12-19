@@ -86,6 +86,48 @@ public:
 			y = TEHOGY;
 		}
 	}
+	void DrawRecticle(int x, int y, int r, int g, int b)
+	{
+		PutPixel(x + 3, y, r, g, b);
+		PutPixel(x + 4, y, r, g, b);
+		PutPixel(x + 5, y, r, g, b);
+		PutPixel(x - 3, y, r, g, b);
+		PutPixel(x - 4, y, r, g, b);
+		PutPixel(x - 5, y, r, g, b);
+		PutPixel(x, y + 3, r, g, b);
+		PutPixel(x, y + 4, r, g, b);
+		PutPixel(x, y + 5, r, g, b);
+		PutPixel(x, y - 3, r, g, b);
+		PutPixel(x, y - 4, r, g, b);
+		PutPixel(x, y - 5, r, g, b);
+	}
+	void DrawBox(int x, int y, int r, int g, int b)
+	{
+		PutPixel(x + 3, y + 5, r, g, b);
+		PutPixel(x + 4, y + 5, r, g, b);
+		PutPixel(x + 5, y + 5, r, g, b);
+		PutPixel(x - 3, y + 5, r, g, b);
+		PutPixel(x - 4, y + 5, r, g, b);
+		PutPixel(x - 5, y + 5, r, g, b);
+		PutPixel(x + 3, y - 5, r, g, b);
+		PutPixel(x + 4, y - 5, r, g, b);
+		PutPixel(x + 5, y - 5, r, g, b);
+		PutPixel(x - 3, y - 5, r, g, b);
+		PutPixel(x - 4, y - 5, r, g, b);
+		PutPixel(x - 5, y - 5, r, g, b);
+		PutPixel(x + 5, y + 3, r, g, b);
+		PutPixel(x + 5, y + 4, r, g, b);
+		PutPixel(x + 5, y + 5, r, g, b);
+		PutPixel(x + 5, y - 3, r, g, b);
+		PutPixel(x + 5, y - 4, r, g, b);
+		PutPixel(x - 5, y - 5, r, g, b);
+		PutPixel(x - 5, y + 3, r, g, b);
+		PutPixel(x - 5, y + 4, r, g, b);
+		PutPixel(x - 5, y + 5, r, g, b);
+		PutPixel(x - 5, y - 3, r, g, b);
+		PutPixel(x - 5, y - 4, r, g, b);
+		PutPixel(x - 5, y - 5, r, g, b);
+	}
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;

@@ -101,50 +101,144 @@ void Game::UpdateModel()
 	{
 		InhibitLeft = false;
 	}
-	if (x < 7)
-	{
-		x = 7;
-		vx = 0;
-	}
-	if (x > 793)
-	{
-		x = 793;
-		vx = 0;
-	}
-	if (y < 7)
-	{
-		y = 7;
-		vy = 0;
-	}
-	if (y > 593)
-	{
-		y = 593;
-		vy = 0;
-	}
 	x = x + vx;
 	y = y + vy;
-	ShapeIsChanged = (wnd.kbd.KeyIsPressed(VK_SHIFT));
+	if (x < 6)
+	{
+		x = 6;
+		vx = 0;
+	}
+	if (x > gfx.ScreenWidth - 7)
+	{
+		x = gfx.ScreenWidth - 7;
+		vx = 0;
+	}
+	if (y < 6)
+	{
+		y = 6;
+		vy = 0;
+	}
+	if (y > gfx.ScreenHeight - 7)
+	{
+		y = gfx.ScreenHeight - 7;
+		vy = 0;
+	}
+	
+	Shape_Is_Changed = (wnd.kbd.KeyIsPressed( VK_SHIFT ));
+
+	if (x > a - 10 && x < a + 10 && y > b - 10 && y < b + 10)
+	{
+		gb = 0;
+		rb = 0;
+	}
+	else
+	{
+		gb = 255;
+		rb = 255;
+	}
+	if (wnd.kbd.KeyIsPressed( 'W' ))
+	{
+		if (InhibitW)
+		{
+		}
+		else
+		{
+			vb = vb - 1;
+			InhibitW = true;
+		}
+	}
+	else
+	{
+		InhibitW = false;
+	}
+	if (wnd.kbd.KeyIsPressed( 'S' ))
+	{
+		if (InhibitS)
+		{
+		}
+		else
+		{
+			vb = vb + 1;
+			InhibitS = true;
+		}
+	}
+	else
+	{
+		InhibitS = false;
+	}
+	if (wnd.kbd.KeyIsPressed( 'D' ))
+	{
+		if (InhibitD)
+		{
+		}
+		else
+		{
+			va = va + 1;
+			InhibitD = true;
+		}
+	}
+	else
+	{
+		InhibitD = false;
+	}
+	if (wnd.kbd.KeyIsPressed( 'A' ))
+	{
+		if (InhibitA)
+		{
+		}
+		else
+		{
+			va = va - 1;
+			InhibitA = true;
+		}
+	}
+	else
+	{
+		InhibitA = false;
+	}
+	a = a + va;
+	b = b + vb;
+	if (a < 6)
+	{
+		a = 6;
+		va = 0;
+	}
+	if (a > gfx.ScreenWidth - 7)
+	{
+		a = gfx.ScreenWidth - 7;
+		va = 0;
+	}
+	if (b < 6)
+	{
+		b = 6;
+		vb = 0;
+	}
+	if (b > gfx.ScreenHeight - 7)
+	{
+		b = gfx.ScreenHeight - 7;
+		vb = 0;
+	}
+	ShapeIsChanged = (wnd.kbd.KeyIsPressed( 'Z' ));
+
 }
 
 void Game::ComposeFrame()
 {
-	if (ShapeIsChanged)
+	if (Shape_Is_Changed)
 	{
-		gfx.DrawRTri(x, y, 11, 255, gb, gb);
+		gfx.DrawRTri(x-5, y-5, 11, 255, gb, gb);
 	}
 	else
 	{
-		gfx.PutPixel(x + 3, y, 255, gb, gb);
-		gfx.PutPixel(x + 4, y, 255, gb, gb);
-		gfx.PutPixel(x + 5, y, 255, gb, gb);
-		gfx.PutPixel(x - 3, y, 255, gb, gb);
-		gfx.PutPixel(x - 4, y, 255, gb, gb);
-		gfx.PutPixel(x - 5, y, 255, gb, gb);
-		gfx.PutPixel(x, y + 3, 255, gb, gb);
-		gfx.PutPixel(x, y + 4, 255, gb, gb);
-		gfx.PutPixel(x, y + 5, 255, gb, gb);
-		gfx.PutPixel(x, y - 3, 255, gb, gb);
-		gfx.PutPixel(x, y - 4, 255, gb, gb);
-		gfx.PutPixel(x, y - 5, 255, gb, gb);
+		gfx.DrawRecticle(x, y, 255, gb, gb);
+	}
+	
+	if (ShapeIsChanged)
+	{
+		gfx.DrawRTri(a - 5, b - 5, 11, rb, 255, rb);
+	}
+	else
+	{
+		gfx.DrawBox(a, b, rb, 255, rb);
 	}
 }
